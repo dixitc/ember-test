@@ -1,0 +1,66 @@
+body{
+	font-family: "Roboto";
+}
+#clientInfo{
+	width: 100%;
+	height: 35%;
+	background: #FF7043;
+	color: white;
+}
+#clientInfo table{
+	height: 100%;
+	margin-left: 24px;
+}
+#compLogo{
+	height: 50%;
+}
+#compName,#compAddr{
+	height: 20%;
+	font-size: 12px;
+	color: #ffffff;
+}
+#cardSect{
+	width: 100%;
+	height: 55%;
+	padding: 9px;
+}
+.card{
+	background: #FFFFFF;
+	margin: 7px 0;
+	height: calc((100% - 25px)/3);
+	
+}
+.card table{
+	width: 100%;
+	height: 100%;
+}
+.card td{
+	height: 50%;
+}
+.cardLogo{
+	width: 32.75%;
+}
+.cardLogo div{
+	width: 56px;
+	height: 56px;
+	border-radius: 28px;
+	margin: auto;
+}
+.cardLabel{
+	font-size: 18px;
+	color: #4c4c4c;
+	vertical-align: bottom;
+}
+.cardInfo{
+	font-size: 14px;
+	color: #999999;
+}
+#dashBoard div{
+	background: #1CBDF4;
+}
+#instReport div{
+	background: #05CE39;
+}
+#custFeedback div{
+	background: #A52AF4;
+}

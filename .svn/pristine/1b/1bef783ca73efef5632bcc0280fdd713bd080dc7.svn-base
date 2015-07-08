@@ -1,0 +1,126 @@
+body{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background:#ECECEC; 
+	font-family: 'Roboto';
+}
+#savedTag{
+	width: 100%;
+	height: 40px;
+	color: #E73E4E;
+	font-weight: 400;
+	padding: 10px 0 10px 16px;
+}
+#todayTag{
+	width: 100%;
+	height: 40px;
+	color: #8E8E8E;
+	font-weight: 600;
+	padding: 10px 0 10px 16px;
+}
+.card{
+	width: 100%;
+	height: 86px;
+	background: #FAFAFA;
+	
+	border-bottom: 1px solid #E7E1E1;
+	margin:  0;
+}
+
+.card table{
+	width: 100%;
+	height: 100%;
+	vertical-align: middle;
+}
+.cardLogo{
+	width: 25%;
+}
+.cardLogo-div{
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	background: #FFCD40;
+	margin: auto;
+	color:white;
+}
+
+.cardLogo-span{
+	height: 25px;
+	border-radius: 50%;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+	font-size: 15px;
+	width: 80%;
+	font-family: 'Roboto';
+	font-weight: 400;
+}
+
+.cardName{
+	padding-top: 10px;
+	font-size: 16px;
+	color: #4d4d4d;
+	vertical-align: bottom;
+}
+.cardDate{
+	font-size: 12px;
+	color: #999999;
+	vertical-align: top;
+}
+.cardInfo{
+	font-size: 14px;
+	color: #4d4d4d;
+	vertical-align: top;
+}
+
+
+	button {
+		font-size: 30px;
+		font-weight: 100;
+		position: fixed;
+		display: inline-block;
+		width: 56px;
+		height: 56px;
+		bottom:0px;
+		right:0px;
+		margin-right:20px;
+		margin-bottom: 20px;
+		border-radius: 50%;
+		border:none;
+		outline: none;
+		color: #fff;
+		overflow: hidden;
+		-webkit-user-drag: none;
+		-webkit-transform: scale(1) rotate(360deg);
+		transform: scale(1) rotate(360deg);
+		-webkit-transition: -webkit-transform 150ms cubic-bezier(.4,0,1,1);
+		transition: transform 150ms cubic-bezier(.4,0,1,1);
+		transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+		transition-delay: 0.2s;
+		transition: transform 0.25s;
+		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+		background-color: #E7283A;
+	}
+.action-options{
+	z-index: 4;
+	opacity: 0;
+	-webkit-transform: scale(.4) rotate(360deg);
+	transform: scale(.4) rotate(360deg);
+	-webkit-transition: all 120ms cubic-bezier(.25,.25,0,1);
+	transition: all 120ms cubic-bezier(.25,.25,0,1);	
+}
+#add-sensors{
+	margin-bottom: 100px;
+	background-color: #FCA203;	
+	-webkit-transition-delay: 75ms;
+	transition-delay: 75ms;	
+}
+
+#action-button{
+	z-index: 4;
+	
+}

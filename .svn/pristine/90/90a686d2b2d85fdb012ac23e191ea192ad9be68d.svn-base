@@ -1,0 +1,50 @@
+<section id="sec1">
+			<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+				<div classs="container-fluid">
+				    <div class="navbar-header" >
+				    {{#link-to 'user.clients'}}
+				    	<span class="navbar-brand glyphicon glyphicon-arrow-left" style="color:white;top:0"  ></span>
+			    	{{/link-to}}
+				    	<p style="color:white;font-size:1.2em;margin-left:60px" class="navbar-text">{{slug}}</p>
+					</div>
+				</div>
+			</nav>
+		</section>	
+
+
+		<section id="sec1">
+			<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+				<div classs="container-fluid">
+				    <div class="navbar-header" >
+				    {{#link-to 'login'}}
+				    	<span class="navbar-brand glyphicon glyphicon-arrow-left" style="color:white;top:0"  ></span>
+			    	{{/link-to}}
+				    	<p style="color:white;font-size:1.2em;margin-left:60px" class="navbar-text">Clients</p>
+					</div>
+				</div>
+			</nav>
+		</section>
+
+			<section id="sec1">
+			<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+				<div classs="container-fluid">
+				    <div class="navbar-header" >
+				    {{#link-to 'client' this}}
+				    	<span class="navbar-brand glyphicon glyphicon-arrow-left" style="color:white;top:0"  ></span>
+			    	{{/link-to}}
+				    	<p style="color:white;font-size:1.2em;margin-left:60px" class="navbar-text">Installation Reports</p>
+					</div>
+				</div>
+			</nav>
+		</section>	
+
+				<section id="sec1">
+			<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+				<div classs="container-fluid">
+				    <div class="navbar-header" >
+				    	<span class="navbar-brand" style="color:white;top:0" {{action 'cancelShit'}} >X</span>
+				    	<p style="color:white;font-size:1.2em;margin-left:60px" class="navbar-text">New Installation</p>
+					</div>
+				</div>
+			</nav>
+		</section>	

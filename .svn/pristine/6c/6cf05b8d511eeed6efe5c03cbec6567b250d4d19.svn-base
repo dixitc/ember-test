@@ -1,0 +1,8 @@
+LiquidFire.map(function(){
+  this.transition(
+    this.fromRoute('login', 'client.installation','client.index','user.clients'),
+    this.toRoute('user', 'client.report','client.report','client.index' ),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
+});

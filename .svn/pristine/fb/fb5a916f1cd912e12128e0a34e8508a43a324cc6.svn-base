@@ -1,0 +1,129 @@
+@font-face {
+	font-family: 'infieldicon';
+	src:url('fonts/infieldicon.eot?rwdegf');
+	src:url('fonts/infieldicon.eot?#iefixrwdegf') format('embedded-opentype'),
+		url('fonts/infieldicon.woff?rwdegf') format('woff'),
+		url('fonts/infieldicon.ttf?rwdegf') format('truetype'),
+		url('fonts/infieldicon.svg?rwdegf#infieldicon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="infield-"], [class*=" infield-"] {
+	font-family: 'infieldicon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.infield-angry:before {
+	content: "\e600";
+}
+
+.infield-annoyed:before {
+	content: "\e601";
+}
+
+.infield-neutral:before {
+	content: "\e602";
+}
+
+.infield-okok:before {
+	content: "\e603";
+}
+
+.infield-shocked:before {
+	content: "\e604";
+}
+
+.infield-dislike:before {
+	content: "\e605";
+}
+
+.infield-enjoyed:before {
+	content: "\e606";
+}
+
+.infield-happy:before {
+	content: "\e607";
+}
+
+.infield-arrow:before {
+	content: "\e608";
+}
+
+.infield-add:before {
+	content: "\e609";
+}
+
+.infield-tick:before {
+	content: "\e60a";
+}
+
+.infield-cross:before {
+	content: "\e60b";
+}
+
+.infield-clip:before {
+	content: "\e60c";
+}
+
+.infield-search:before {
+	content: "\e60d";
+}
+
+.infield-reply:before {
+	content: "\e60e";
+}
+
+.infield-more:before {
+	content: "\e60f";
+}
+
+.infield-camera:before {
+	content: "\e610";
+}
+
+.infield-car:before {
+	content: "\e611";
+}
+
+.infield-clock:before {
+	content: "\e612";
+}
+
+.infield-comment:before {
+	content: "\e613";
+}
+
+.infield-delete:before {
+	content: "\e614";
+}
+
+.infield-document:before {
+	content: "\e615";
+}
+
+.infield-installation:before {
+	content: "\e616";
+}
+
+.infield-location:before {
+	content: "\e617";
+}
+
+.infield-message:before {
+	content: "\e618";
+}
+
+.infield-phone:before {
+	content: "\e619";
+}
+

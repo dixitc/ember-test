@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="main.css">
+
+		<!-- Google maps link below -->
+		<script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
+		<script type="text/javascript" src="jquery.js"></script>
+	</head>
+
+	<body>
+
+		<section id="sec1">
+			<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+				<div classs="container-fluid">
+				    <div class="navbar-header" >
+				    	<span class="navbar-brand" style="color:white;top:0">X</span>
+				    	<p style="color:white;font-size:1.2em;margin-left:60px" class="navbar-text">New Installation</p>
+					</div>
+				</div>
+			</nav>
+		</section>
+
+	<script type="text/x-handlebars" id="components/google-maps">
+		<div class="map-canvas">
+		</div>
+	</script>		
+
+
+	<script type="text/x-handlebars" >
+
+		{{outlet}}
+
+	</script>
+
+	</body>
+
+	<script type="text/x-handlebars" data-template-name="map" id="map">
+	<button class="option-button"></button>
+		<div class="map">
+			{{google-maps latitude="40.7142700" longitude="-74.0059700"}}
+		</div>
+		<div class="map-location">
+			<p class="mapword1">
+				Manipal Hospital
+			</p>
+			<p class="mapword2">
+				98, Hal Airport Road
+			</p>
+			<p class="mapword2">
+				Bengaluru
+			</p>		
+		</div>
+	</script>
+
+
+	<script type="text/x-handlebars" data-template-name="feedback" id="feedback">
+	<button class="option-button" {{action 'testoption'}} ></button>
+		<div class="feedback">
+			
+		</div>
+
+	</script>
+
+
+	<script type="text/x-handlebars" data-template-name="test" id="test">
+		<p>adfkjnbgdfsakj</p>
+		<p>adfkjnbgdfsakj</p>
+		<p>adfkjnbgdfsakj</p>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="date" id="date">
+
+		<div class="datepic">
+			<div class="datepicholder">
+				<div class="datepicholdertop">
+					<span id="datepicword">
+						NOV
+					</span>
+				</div>
+				<hr>
+				<span id="datepicnumber">
+					10
+				</span>
+
+			</div>
+			<hr class="datepicstrip">
+		</div>
+		<div class="date">
+
+			<p class="dateword1">
+				Nov 10, 2014
+			</p>
+			<p class="dateword2">
+				4:10 PM
+			</p>
+
+		</div>
+		
+
+	</script>
+
+
+	<script type="text/x-handlebars" id="index">
+
+		<div class="blur-cover" {{action 'disableaction'}} ></div>
+
+
+  		{{#view CardContainerView}}
+
+
+			{{#each myview in view.myvar}}
+				
+				<p id="view-label">
+					{{myview}}
+				</p>
+
+				{{#view CardView}}
+
+					{{view myview}}
+
+				{{/view}}
+
+			<br>
+
+			{{/each}}
+
+			{{#view CardView}}
+				{{view view.TestView}}
+			{{/view}}	
+
+			<p id="view-label">
+				Devices
+			</p>			
+			
+			
+			
+		{{/view}}
+ 
+		
+		<button {{action 'testbutton'}} id="action-button"><img id="action-icon" src="plus.png" style="height:25px;width:25px;display:block;margin-left: auto;margin-right: auto"></button>
+
+		<button {{action 'addingsensors'}} class="action-options" id="add-sensors"><img id="action-icon" src="plus.png" style="height:25px;width:25px;display:block;margin-left: auto;margin-right: auto"></button>
+
+		<button class="action-options" id="change-location"><img id="action-icon" src="plus.png" style="height:18px;width:18px;display:block;margin-left: auto;margin-right: auto"></button>
+
+	<div>
+
+		<button class="action-options" id="add-feedback"><img id="action-icon" src="plus.png" style="height:18px;width:18px;display:block;margin-left: auto;margin-right: auto"></button>
+
+	</div>
+
+
+	
+
+	</script>
+
+
+	<script type="text/javascript">
+
+		$('.card').on('mousedown', function(e){
+			console.log(e)
+			console.log($(this))
+			console.log(e.target)
+			e.preventDefault();
+			var $this = $(this),
+			offset = $this.offset(),
+			offsetY = (e.pageY - offset.top),
+			offsetX = (e.pageX - offset.left);
+
+			$this.addClass('clicked').append(
+			$('<span class="card-circle"></span>')
+				.css({
+					'top' : offsetY,
+					'left' : offsetX
+				})
+			);
+		}).on('mouseup mouseout', function(e){
+			e.preventDefault();
+			console.log($(this))
+			console.log(e.target)			
+			var $this = $(this);
+		  	$this.removeClass('clicked')
+		    .children().fadeOut(function(){
+		    	console.log($(this))
+		    	$(this).remove();
+		    });
+		});
+	</script>
+	<script src="libs/handlebars-1.1.2.js"></script>
+	<script src="libs/latestember.min.js"></script>
+	<script src="libs/ember-data.min.js"></script>
+	<script src="app.js"></script>
+</html>

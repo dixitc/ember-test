@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="libs/ember-animated-outlet.css"/>
+		<link rel="stylesheet" type="text/css" href="fonts/infieldicon.ttf">
+		<!-- Google maps link below -->
+		<script src="http://maps.googleapis.com/maps/api/js?v=3"></script>
+		<script type="text/javascript" src="jquery.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+	</head>
+
+	<body>
+
+		<style type="text/css">
+
+			.navbar-default{
+				border:none;
+				margin-bottom: 0px;
+				position: inherit;
+			}
+
+			.liquid-child{
+				margin: 0px;
+				padding: 0px;
+				translate : none;
+			}
+
+		</style>
+
+
+	<script type="text/x-handlebars" id="components/google-maps">
+		<div class="map-canvas">
+		</div>
+	</script>		
+
+
+	<script type="text/x-handlebars" >
+
+		{{outlet}}
+
+	</script>
+
+	</body>
+
+	<script type="text/x-handlebars" data-template-name="map" id="map">
+	<button class="option-button" {{action 'mapoptions'}} ></button>
+		<div class="map">
+
+			{{google-maps latitude="40.7142700" longitude="-74.0059700"}}
+
+		</div>
+
+		{{#if selecthosp}}
+			<div class="hosp-list" id="#hosp-list">
+				<ul class="material-ul">
+					{{#each hosp in hospitals}}
+						
+						<li {{action 'sethosp' hosp.id}} class="material-li" >
+							{{hosp.name}}
+						</li>
+
+					{{/each}}
+				</ul>
+			</div>
+			
+			{{else}}
+			<div class="map-location" {{action 'selectstuff'}}>
+				<p class="mapword1">
+					{{this.controller.model.name}}
+				</p>
+				<p class="mapword2">
+					{{this.controller.model.street}}
+					
+				</p>
+				<p class="mapword2">
+					{{this.controller.model.city}}
+					
+				</p>		
+			</div>
+		{{/if}}
+
+
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="feedback" id="feedback">
+
+		<button class="option-button" {{action 'testoption'}} ></button>
+
+		<div class="feedbackview-container">
+			<div class="feedbackview-right">
+				<img src="images/device.png">
+			</div>
+			<div class="feedbackview-left">
+			
+				<span class="feedbackview-text" id="feedbackview-text-first">
+					
+				</span>
+			
+				<span class="feedbackview-text">
+					
+				</span>
+
+				<span class="feedbackview-text">
+					
+				</span>
+
+			</div>			
+		</div>
+
+	</script>	
+
+	<script type="text/x-handlebars" data-template-name="devicetemplate" id="deviceview">
+
+		<button class="option-button" {{action 'removedevice' this}} ></button>
+	
+		<div class="deviceview-container">
+			<div class="deviceview-right">
+				<img src="images/device.png">
+			</div>
+			<div class="deviceview-left">
+			
+				<span class="deviceview-text" id="deviceview-text-first">
+					{{person.productName}}
+				</span>
+			
+				<span class="deviceview-text">
+					Model # - {{person.modelNumber}}
+				</span>
+
+				<span class="deviceview-text">
+					Lot # - {{person.uniqueCode}}
+				</span>
+
+			</div>
+		</div>
+	
+	</script>
+
+
+
+
+	<script type="text/x-handlebars" data-template-name="client/asdf" id="comments">
+
+		<p>
+			ppppppepepeeee
+			{{slug}}
+		</p>
+
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="user/home" id="home">
+		<p>
+			alsdfg
+			{{title}}
+		</p>
+
+		<div class="home" {{action 'prack'}}>
+
+		</div>
+	
+
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="client/index" id="clientPage">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/client.css">
+		
+  			
+			<nav class="navbar navbar-default navbar-fixed-top " role="navigation" style="background-color:#1B39A8">
+				<div classs="container-fluid">
+				    <div class="navbar-header" >
+				    {{#link-to 'user.clients'}}
+				    	<span class="navbar-brand glyphicon glyphicon-arrow-left" style="color:white;top:0"  ></span>
+			    	{{/link-to}}
+				    	<p style="color:white;font-size:1.2em;margin-left:60px" class="navbar-text">{{slug}}</p>
+					</div>
+				</div>
+			</nav>
+		
+		<section id="clientInfo">
+			<table>
+			<tr id="compLogo"><td></td></tr>
+			<tr id="compName">
+			<td>
+			{{slug}} Mediacl Technologies
+			<br>
+			India Pvt. Ltd
+			</td>
+			</tr>
+			<tr id="compAddr">
+			<td>
+			1800 425 MASIMO
+			<br>
+			Millers Road, Bangalore
+			</td>
+			</tr>
+			</table>
+		</section>
+		<section id="cardSect">
+			<div class="card" id="dashBoard">
+			<table>
+			<tr>
+			<td rowspan="2" class="cardLogo"><div></div></td>
+			<td class="cardLabel">Dashboard</td>
+			</tr>
+			<tr>
+			<td class="cardInfo">90 New installations this month</td>
+			</tr>
+			</table>
+			</div>
+			<div class="card" id="instReport">
+			{{#link-to 'client.report'}}
+			<table>
+			<tr>
+			<td rowspan="2" class="cardLogo"><div></div></td>
+			<td class="cardLabel">Installation Reports</td>
+			</tr>
+			<tr>
+			<td class="cardInfo">1192 Devices&nbsp;&nbsp;|&nbsp;&nbsp;126 Sensors</td>
+			</tr>
+			</table>
+			{{/link-to}}
+			</div>
+			<div class="card" id="custFeedback">
+			<table>
+			<tr>
+			<td rowspan="2" class="cardLogo"><div></div></td>
+			<td class="cardLabel">Customer Feedback</td>
+			</tr>
+			<tr>
+			<td class="cardInfo">192 Open &nbsp;&nbsp;|&nbsp;&nbsp;252 Resolved</td>
+			</tr>
+			</table>
+			</div>
+		</section>	
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="login" id="login">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/login.css">
+		<section id="logoSec">
+		<table id="logo">
+		  <tr>
+		    <td>
+		      <div id="logoCrl"><div></div></div>
+		      <div id="in">in</div>
+		      <div id="field">field</div>
+		    </td>
+		  </tr>
+		</table>
+		<!--<div id="logo">
+		  
+		    <div>
+		      <span id="logoCrl"></span>
+		      <span id="in">in</span>
+		      <span id="field">field</span>
+		    </div>
+		  
+		</div>-->
+		</section>
+		<section id="loginSec">
+		<div id="signInInst">Sign in with your in-field account.</div>
+		<div id="loginCard">
+		  <form {{action "login" on="submit"}}>
+		    
+		      <div class="group">
+		        <span class="glyphicon glyphicon-user"></span>
+		        <input id="myuser" type="text" required>
+		        <label>Email</label>
+		      </div>
+		    
+		      <div class="group">
+		        <span class="glyphicon glyphicon-lock"></span>
+		        <input id="mypass" type="password" required>
+		        <label>Password</label>
+		      </div>
+		    
+		    <div id="btnSec">
+		      <button id="forgetBtn" {{action}}>
+		        FORGOT PASSWORD?
+		      </button>
+		      <button id="signInBtn" type="submit" >
+		        
+		          SIGN IN
+		        
+		      </button>
+		    </div>
+		  </form>
+		</div>
+		</section>
+	</script>
+
+		<script type="text/x-handlebars" data-template-name="user/asdf" id="clients">
+			<p>
+			asdfgadfgsadfgsdfghsdfgh
+			</p>
+			<ul>
+				{{#each me in model}}
+					{{#with me}}
+					<li>
+						{{#link-to 'client.index' this}}
+							{{slug}}
+						{{/link-to}}
+					</li>
+					{{/with}}
+				{{/each}}
+			</ul>
+
+			{{outlet}}
+	
+
+		</script>
+
+	<script type="text/x-handlebars" data-template-name="user/clients" id="clienList">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		
+			<nav class="navbar navbar-default navbar-fixed-top " role="navigation" style="background-color:#1B39A8">
+				<div classs="container-fluid">
+				    <div class="navbar-header" >
+				    {{#link-to 'login'}}
+				    	<span class="navbar-brand infield-arrow" style="color:white;top:0"  ></span>
+			    	{{/link-to}}
+				    	<p style="color:white;font-size:1.2em;font-family:'Roboto';font-weight:500;margin-left:60px" class="navbar-text">Clients</p>
+					</div>
+				</div>
+			</nav>
+		
+		
+      <section id="clients_list" style="margin-top:0px">
+        {{#each client in model}}
+          {{#link-to 'client.index' client}}
+            <div class="clientCard">
+              <div class="clintInfo">
+                <span class="clintLogo"></span>
+                <span class="clientTitle">{{client.slug}}</span>
+                <span class="infoBtn">i</span>
+                <div class="installationCount">{{client.title}} Installations</div>
+              </div> 
+            </div>
+          {{/link-to}}
+        {{/each}}
+      </section>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="user" id="user">
+
+		{{outlet}}
+
+
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="user/index" id="user/index">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<div class="home" style="background-color:blue" {{action 'frack'}} >
+
+		</div>
+
+	</script>	
+
+	<script type="text/x-handlebars" data-template-name="test" id="test">
+		<p>adfkjnbgdfsakj</p>
+		<p>adfkjnbgdfsakj</p>
+		<p>adfkjnbgdfsakj</p>
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="date" id="date">
+
+		<div class="datepic">
+			<div class="datepicholder">
+				<div class="datepicholdertop">
+					<span id="datepicword">
+						DEC
+					</span>
+				</div>
+				<hr>
+				<span id="datepicnumber">
+					30
+				</span>
+
+			</div>
+			<hr class="datepicstrip">
+		</div>
+		<div class="date">
+
+			<div class="dateword1">
+				Dec 30, 2014
+			</div>
+			<div class="dateword2">
+				{{date time}}
+			</div>
+
+		</div>
+	
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="reportcard">
+
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="client/report">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/installationReport.css">
+  			
+			<nav class="navbar navbar-default navbar-fixed-top " role="navigation" style="background-color:#1B39A8">
+				<div classs="container-fluid">
+				    <div class="navbar-header" >
+				    {{#link-to 'client.index'}}
+				    	<span class="navbar-brand glyphicon glyphicon-arrow-left" style="color:white;top:0"  ></span>
+			    	{{/link-to}}
+				    	<p style="color:white;font-size:1.2em;margin-left:60px" class="navbar-text">Installation Reports</p>
+					</div>
+				</div>
+			</nav>
+		
+	<div >		
+   {{#view CardContainerView}}
+  <section id="saved" style="margin-bottom: 20px;">
+    <div id='savedTag'>Saved({{drafts.length}})</div>
+    {{#each report in drafts}}
+
+	   {{#view CardView}}
+
+	   		{{#link-to 'edit' report.id}}
+			    <div class='card'>
+			      <table>
+			        <tr>
+			          <td rowspan="3" class='cardLogo'><div class="cardLogo-div" style={{fillStyle}}><span class="cardLogo-span">{{letter}} <span></div></td>
+			          <td class="cardName">{{report.name}}</td>
+			        </tr>
+			        <tr>
+			          <td class="cardDate">{{report.created}}</td>
+			        </tr>	
+			        <tr>
+			          <td class="cardInfo">{{report.devices.length}} Devices </td>
+			        </tr>
+			      </table>
+			    </div>
+		    {{/link-to}}
+	   {{/view}}
+   
+   {{/each}}
+
+   <div id='savedTag' style="color:#999999">Today</div>
+   
+      {{#each report in model}}
+
+   		{{#view CardView}}
+
+	   		{{#link-to 'edit' report.id}}
+			    <div class='card'>
+			      <table>
+			        <tr>
+			          <td rowspan="3" class='cardLogo'><div class="cardLogo-div" style={{fillStyle}}><span class="cardLogo-span">{{letter}}<span></div></td>
+			          <td class="cardName">{{report.name}}</td>
+			        </tr>
+			        <tr>
+			          <td class="cardDate">{{report.created}}</td>
+			        </tr>	
+			        <tr>
+			          <td class="cardInfo">{{report.devices.length}} Devices </td>
+			        </tr>
+			      </table>
+			    </div>
+		    {{/link-to}}
+
+   		{{/view}}
+   
+   {{/each}}
+	
+  </section> 
+				{{/view}}
+				</div>
+
+		<button {{action 'install'}} id="action-button"><img id="action-icon" src="plus.png" style="height:25px;width:25px;display:block;margin-left: auto;margin-right: auto"></button>
+
+				
+</script>
+
+<script type="text/x-handlebars" data-template-name="edit" id="asdf">
+	{{outlet}}
+</script>
+
+<script type="text/x-handlebars" id="components/device-view">
+	<p>my components</p>
+
+</script>
+
+	<script type="text/x-handlebars" data-template-name="edit/index" id="asdf">
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<link rel="stylesheet" type="text/css" href="css/productDetails.css">
+
+		
+
+			<nav class="navbar navbar-default navbar-fixed-top " role="navigation" style="background-color:#1B39A8">
+				<div classs="container-fluid">
+				    <div class="navbar-header" >
+				    {{#link-to 'client.report'}}
+				    	<span class="navbar-brand glyphicon glyphicon-arrow-left" style="color:white;top:0"  ></span>
+			    	{{/link-to}}
+			    	<span class="navbar-brand glyphicon glyphicon-ok" style="color:white;top:0;float:right" {{action 'addReport'}} ></span>
+			    		{{#if this.controller.editing}}
+				    		<p style="color:white;font-size:1.2em;margin-left:60px" class="navbar-text">{{model.name}}</p>
+			    		{{else}}
+			    			<p style="color:white;font-size:1.2em;margin-left:60px" class="navbar-text">New Installation</p>
+		    			{{/if}}
+					</div>
+				</div>
+			</nav>
+
+			
+			{{#if this.controller.editing}}
+				<div class="display-flag" style={{ifColor}}>
+					<span class="display-flag-text">
+				{{ifCond}}
+					</span>
+				</div>
+			{{/if}}
+			
+
+
+		<div class="blur-cover" {{action 'disableaction'}} ></div>
+
+
+
+  		{{#view CardContainerView}}
+
+
+			{{#each myview in view.myvar}}
+				
+				<p class="view-label">
+					{{myview.name}}
+				</p>
+
+				{{#view CardView}}
+
+					{{view myview.view contentBinding=this.controller.model}}
+
+				{{/view}}
+
+			<br>
+
+			{{/each}}
+	
+
+			<p class="view-label">
+				Products
+			</p>
+
+
+
+			{{#if model.devices}}
+				{{#view DeviceContainerView}}
+
+					{{#each person in model.devices}}
+
+						{{#with person}}
+							{{#view CardView}}
+							
+								{{view DeviceView contextBinding='person'}}
+
+							{{/view}}
+						{{/with}}
+
+					{{/each}}
+	 
+				{{/view}}
+
+			{{else}}
+				<div class="card-well">
+
+					<span class="card-well-text">
+						Add a product to this report using the + icon
+					</span>
+
+				</div>
+			{{/if}}
+
+
+			<p class="view-label">
+				Customer Feedback
+			</p>
+			{{#if model.designation}}
+
+				{{#view CardView}}
+					
+					<button class="option-button" {{action 'testoption'}} ></button>
+
+					<div class="feedbackview-container">
+						<div class="feedbackview-right">
+							<div class="feedbackview-image" >
+								<img style="height:100%;width:100%;border-radius:50%" src="images/person.png">
+							</div>	
+						</div>
+						<div class="feedbackview-left">
+						
+							<span class="feedbackview-text" id="feedbackview-text-first">
+								{{model.person}}
+							</span>
+						
+							<span class="feedbackview-text" id="feedbackview-text-second">
+								{{model.designation}}
+							</span>
+
+							<span class="feedbackview-text" id="feedbackview-text-third">
+								<div class="signatureview-imgdiv" style={{setsmiley}} ></div>
+								<div class="signatureview-textdiv">
+									{{setsat}}
+								</div>
+							</span>
+
+						</div>			
+					</div>
+
+				{{/view}}
+			{{else}}
+
+				<div class="card-well">
+
+					<span class="card-well-text">
+						Add Customer Feedback using the + icon
+					</span>
+
+				</div>
+
+			{{/if}}
+
+			<p class="view-label">
+				Authority Signature
+			</p>			
+
+			{{#if model.imgurl}}
+
+				{{#view CardView}}
+					
+					<button class="option-button" {{action 'testoption'}} ></button>
+
+					<div class="feedbackview-container">
+						<div class="feedbackview-right">
+							<div class="feedbackview-image" >
+								<img style="height:100%;width:100%;border-radius:50%" src="images/person.png">
+							</div>	
+						</div>
+						<div class="feedbackview-left">
+						
+							<span class="feedbackview-text" id="feedbackview-text-first">
+								{{model.authorityperson}}
+							</span>
+						
+							<span class="feedbackview-text" id="feedbackview-text-second">
+								{{model.authoritydesignation}}
+							</span>
+
+							<span class="feedbackview-text" id="feedbackview-text-third">
+								<img id="sign-image" {{bind-attr src=model.imgurl}}>
+							</span>
+
+						</div>			
+					</div>
+
+				{{/view}}
+
+			{{else}}
+
+				<div class="card-well">
+
+					<span class="card-well-text">
+						Add Customer Feedback using the + icon
+					</span>
+
+				</div>
+
+			{{/if}}						
+
+
+			<div class="save-footer">
+
+				{{#unless this.controller.editing}}
+					<button class="footer-btn">SAVE DRAFT</button>
+					<button class="footer-btn">SUBMIT REPORT</button>
+				{{/unless}}
+
+			</div>
+
+	
+			
+			
+			
+			
+		{{/view}}
+ 
+
+	<div class="action-button-div" id="action-button-div">
+		<button {{action 'testbutton'}} id="action-button"><img id="action-icon" src="plus.png" style="height:25px;width:25px;display:block;margin-left: auto;margin-right: auto"></button>
+	</div>
+
+
+	<div class="action-option-div" id="add-sensors-div">
+		<span class="action-span">Add Products</span>
+		<button {{action 'gotodevice' this}} class="action-options" id="add-sensors"><img id="action-icon" src="plus.png" style="height:25px;width:25px;display:block;margin-left: auto;margin-right: auto"></button>
+	</div>
+
+	<div class="action-option-div" id="change-location-div">
+		<span class="action-span">Add Customer Feedback</span>
+		<button class="action-options" id="change-location" {{action 'gotofeedback' this}} ><img id="action-icon" src="plus.png" style="height:18px;width:18px;display:block;margin-left: auto;margin-right: auto">
+		</button>
+	</div>
+
+	<div class="action-option-div" id="add-feedback-div">
+		<span class="action-span">Add Authority Signature</span>
+		<button class="action-options" id="add-feedback"><img id="action-icon" src="plus.png" style="height:18px;width:18px;display:block;margin-left: auto;margin-right: auto;" {{action 'gotosignature' this}} ></button>
+	</div>
+
+	
+
+	</script>
+		<script type="text/x-handlebars" data-template-name="new/feedback">
+
+		<link rel="stylesheet" type="text/css" href="css/feedback.css">
+		<nav class="navbar navbar-default navbar-fixed-top " role="navigation" style="background-color:#1B39A8">
+			<div classs="container-fluid">
+			    <div class="navbar-header" >
+			    
+			    	<span class="navbar-brand glyphicon glyphicon-arrow-left" style="color:white;top:0" {{action 'savefeedback'}} > </span>
+		    	
+			    	<p style="color:white;font-size:1.2em;margin-left:60px" class="navbar-text">{{model.name}}</p>
+				</div>
+			</div>
+		</nav>
+		<div class="feedback-wrapper" style="margin-top:60px">
+			
+			<div id="customerPhoto">
+			</div>
+			<input id="feedbackname">
+			<input id="feedbackdesignation">
+			
+		</div>
+
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="edit/feedback">
+
+		<link rel="stylesheet" type="text/css" href="css/feedback.css">
+		<nav class="navbar navbar-default navbar-fixed-top " role="navigation" style="background-color:#1B39A8">
+			<div classs="container-fluid">
+			    <div class="navbar-header" >
+			    	
+			    		<span class="navbar-brand glyphicon glyphicon-arrow-left" style="color:white;top:0" {{action 'redirectfeedback'}} > </span>
+			    	
+					<span class="navbar-brand glyphicon glyphicon-ok" style="color:white;top:0;float:right" {{action 'savefeedback'}} ></span>		    	
+			    	<p style="color:white;font-size:1.2em;margin-left:60px" class="navbar-text">{{model.name}}</p>
+				</div>
+			</div>
+		</nav>
+		<div class="feedback-wrapper">
+			
+			<div id="feedback-photo"></div>
+
+			<div class="feedback-form-div">
+				
+					<div class="feedback-input">
+						<input class="add-input" type="text" id='productName' placeholder="Name of the Person">
+					</div>
+					<div class="feedback-input">
+						<input class="add-input" type="text" id='modelNo' placeholder="Designation">
+					</div>
+				
+			</div>
+			<div class="feedback-satisfaction">
+ <table>
+      <tr>
+        <td>
+          <div id="enjoyed" class="fdbkLevel" {{action 'selectsatisfaction' 1}} >
+            <div class="levelImg" id="level-1"></div>
+            <div class="levelName">Enjoyed</div>
+          </div>
+        </td>
+        <td>
+          <div id="happy" class="fdbkLevel" {{action 'selectsatisfaction' 2}} >
+            <div class="levelImg" id="level-2"></div>
+            <div class="levelName">Happy</div>
+          </div>
+        </td>
+        <td>
+          <div id="enjoyed" class="fdbkLevel" {{action 'selectsatisfaction' 3}} >
+            <div class="levelImg" id="level-3"></div>
+            <div class="levelName">Ok Ok!</div>
+          </div>
+        </td>
+        <td>
+          <div id="enjoyed" class="fdbkLevel" {{action 'selectsatisfaction' 4}} >
+            <div class="levelImg" id="level-4"></div>
+            <div class="levelName">Neutral</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="enjoyed" class="fdbkLevel" {{action 'selectsatisfaction' 5}} >
+            <div class="levelImg" id="level-5"></div>
+            <div class="levelName">Dislike</div>
+          </div>
+        </td>
+        <td>
+          <div id="enjoyed" class="fdbkLevel" {{action 'selectsatisfaction' 6}} >
+            <div class="levelImg" id="level-6"></div>
+            <div class="levelName">Shocked</div>
+          </div>
+        </td>
+        <td>
+          <div id="enjoyed" class="fdbkLevel" {{action 'selectsatisfaction' 7}} >
+            <div class="levelImg" id="level-7"></div>
+            <div class="levelName">Annoyed</div>
+          </div>
+        </td>
+        <td>
+          <div id="enjoyed" class="fdbkLevel" {{action 'selectsatisfaction' 8}} >
+            <div class="levelImg" id="level-8"></div>
+            <div class="levelName">Angry</div>
+          </div>
+        </td>
+      </tr>
+    </table>			
+			</div>
+
+			<button {{action 'testbutton'}} id="action-button"><img id="action-icon" src="plus.png" style="height:25px;width:25px;display:block;margin-left: auto;margin-right: auto"></button>			
+			
+		</div>
+
+	</script>
+
+	<script type="text/x-handlebars" data-template-name="edit/signature">
+		<link rel="stylesheet" type="text/css" href="css/signature.css">
+		<nav class="navbar navbar-default navbar-fixed-top " role="navigation" style="background-color:#1B39A8">
+			<div classs="container-fluid">
+			    <div class="navbar-header" >
+			    	{{#link-to 'edit.index'}}
+			    		<span class="navbar-brand glyphicon glyphicon-arrow-left" style="color:white;top:0" > </span>
+			    	{{/link-to}}
+					<span class="navbar-brand glyphicon glyphicon-ok" style="color:white;top:0;float:right" {{action 'savesignature'}} ></span>		    	
+			    	<p style="color:white;font-size:1.2em;margin-left:60px" class="navbar-text">{{model.name}}</p>
+				</div>
+			</div>
+		</nav>
+		<div class="feedback-wrapper">
+			
+			<div id="feedback-photo"></div>
+
+			<div class="feedback-form-div">
+				
+					<div class="feedback-input">
+						<input class="add-input" type="text" id='productName' placeholder="Name of the Person">
+					</div>
+					<div class="feedback-input">
+						<input class="add-input" type="text" id='modelNo' placeholder="Designation">
+					</div>
+				
+			</div>
+			<div class="feedback-satisfaction">
+				<p {{action 'sign'}} >
+					Signature
+				</p>
+				
+
+
+
+				<div id="myCanvas">
+				</div>
+				{{#if clicked}}
+<div id="canvas-bottom"><div id="set-sign" {{action "setSign"}} ><img src="images/sign.png"><span></span></div></div>				
+				{{else}}
+					<div class="card-well" {{action 'sign'}} >
+
+						<span class="card-well-text">
+							Click here to add Signature
+						</span>
+
+					</div>
+				{{/if}}
+
+				
+
+			</div>
+
+			<button {{action 'testbutton'}} id="action-button"><img id="action-icon" src="plus.png" style="height:25px;width:25px;display:block;margin-left: auto;margin-right: auto"></button>			
+			
+		</div>
+
+	</script>	
+
+	<script type="text/x-handlebars" data-template-name="edit/device">
+		<link rel="stylesheet" type="text/css" href="css/productDetails.css">
+
+		<nav class="navbar navbar-default navbar-fixed-top " role="navigation" style="background-color:#1B39A8">
+			<div classs="container-fluid">
+			    <div class="navbar-header" >
+			    	
+			    	<span class="navbar-brand glyphicon glyphicon-arrow-left" style="color:white;top:0"  {{action 'redirectdevice'}} ></span>
+		    		{{view App.UploadFileView myupload='frikkinupload' id="admyupload" name="files" multiple="multiple"}}
+		    		<span class="navbar-brand glyphicon glyphicon-paperclip" style="color:white;top:0" {{action 'upload'}} ></span>
+		    		<span class="navbar-brand glyphicon glyphicon-ok" style="color:white;top:0;float:right" {{action 'addDevice'}} ></span>
+			    	<p style="color:white;font-size:1.2em;margin-left:60px" class="navbar-text">blah blah</p>
+				</div>
+			</div>
+		</nav>
+
+
+		<section id='productDetail' style="margin-top:0px">
+
+			<form class="add-form">
+			<input class="add-input" type="text" id='productName'>
+			<label class="add-label" id="productLabel">Product Name</label>
+			<input class="add-input" type="text" id='modelNo'>
+			<label class="add-label" id="modelLabel">Model Number</label>
+			<input class="add-input" type="text" id='uniqueCode'>
+			<span class="glyphicon glyphicon-camera"></span>
+			<label class="add-label" id="codeLabel">Unique Code</label>
+			</form>
+
+		</section>
+
+		{{#if godel}}
+			Attachments
+				{{#each item in this.godel}}
+					<p>{{item.name}}&nbsp;&nbsp;&nbsp;&nbsp; <span class="glyphicon glyphicon-remove" style="font-size:0.6em"></span></p>
+				{{/each}}
+		{{/if}}
+
+	</script>	
+
+
+	<script type="text/javascript">
+
+		$('.card').on('mousedown', function(e){
+			console.log(e)
+			console.log($(this))
+			console.log(e.target)
+			e.preventDefault();
+			var $this = $(this),
+			offset = $this.offset(),
+			offsetY = (e.pageY - offset.top),
+			offsetX = (e.pageX - offset.left);
+
+			$this.addClass('clicked').append(
+			$('<span class="card-circle"></span>')
+				.css({
+					'top' : offsetY,
+					'left' : offsetX
+				})
+			);
+		}).on('mouseup mouseout', function(e){
+			e.preventDefault();
+			console.log($(this))
+			console.log(e.target)			
+			var $this = $(this);
+		  	$this.removeClass('clicked')
+		    .children().fadeOut(function(){
+		    	console.log($(this))
+		    	$(this).remove();
+		    });
+		});
+	</script>
+	<script src="libs/handlebars-1.1.2.js"></script>
+	<script src="libs/latestember.min.js"></script>
+	<script src="libs/ember-data.latest.prod.js"></script>
+    <script type="text/javascript" src="libs/velocity.min.js"></script>
+    <script type="text/javascript" src="libs/liquid-fire-0.15.11.js"></script>
+    <script src="libs/ember-animated-outlet.js"></script>
+	<link rel="stylesheet" type="text/css" href="libs/liquid-fire-0.15.11.css">    
+	<script src="app.js"></script>
+	<script type="text/javascript" src="liquidFire.js"></script>
+	
+</html>

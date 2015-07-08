@@ -1,0 +1,116 @@
+html{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background:#EBEBEB; 
+}
+a{
+	text-decoration: none;	
+}
+.ember-application{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.ember-view{
+	height:100%;
+	margin: 0;
+	padding: 0;
+}
+
+#navBar{
+	width: 100%;
+	height: 10%;
+	background: #1B39A8;
+	color: white;
+	//box-shadow:0px 2px 5px #1B39A8;
+	box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+}
+#container{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+#subNavBar{
+	margin-left: 20px;
+	width: 20px;
+	height: 30px;
+	padding-top: 25px; 
+	float: left;
+}
+.icon-bar{
+	height: 2px;
+	margin-top:-7px;
+	margin-bottom: -7px;
+	background: white;
+	color: white;
+} 
+#clients_list{
+	height: 90%;
+}
+#clnt{
+	font-weight: 500;
+	font-size: 1.5em;
+	height: 20px;
+	margin-top: 0px;
+	padding-top: 13px;
+	padding-left: 70px;
+}
+.clientCard{
+	height: 15%;
+	border-bottom: 1px solid #D6D6D6;
+}
+.clintInfo{
+		
+}
+.clientCard::before{
+	display: block;
+    content: "";
+    width: 100%;
+    height: 25%;
+}
+.clientCard::after{
+	display: block;
+    content: "";
+    width: 100%;
+    height: 25%;
+}
+.clintLogo{
+	height: 36px;
+	width: 36px;
+	border-radius: 18px;
+	background: #FF7043;
+	float: left;
+	margin-right: 25px;
+	margin-left: 15px;
+}
+.infoBtn{
+	font-size: 12px;
+	text-align: center;
+	height: 16px;
+	width: 16px;
+	border-radius: 8px;
+	background: #BBBBBB;
+	color: rgb(255, 255, 255);
+	float: right;
+	margin-right: 20px;
+}
+.clientTitle{
+	font-size: 1.3em;
+	color:black;
+}
+.installationCount{
+	color: #A4A4A4;
+	margin-top: 10px;
+	font-size: 1em;
+}
